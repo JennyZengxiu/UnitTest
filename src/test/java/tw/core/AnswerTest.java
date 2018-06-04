@@ -33,6 +33,15 @@ public class AnswerTest {
     }
 
     @Test
+    public void should_throw_execption_when_given_num_bigger_than_10() throws OutOfRangeAnswerException {
+        Answer answer = new Answer();
+        exception.expect(OutOfRangeAnswerException.class);
+        exception.expectMessage("Answer format is incorrect");
+        answer.setNumList(Arrays.asList("1", "2", "3", "12"));
+        answer.validate();
+    }
+
+    @Test
     public void should_return_a_correct_record_when_given_an_input_string() {
         answer.setNumList(Arrays.asList("2", "3", "4", "5"));
 
